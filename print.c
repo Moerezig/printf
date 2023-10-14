@@ -2,7 +2,7 @@
 
 /**
  * _printf - custom printf function
- * @format: The format string
+ * @*format: The format string
  *
  * Return: The number of characters printed (excluding the null byte)
  */
@@ -16,7 +16,7 @@
 	char char_arg;
 
 
-    va_start(args, format);
+    va_start(args, *format);
 
     while (*format)
     {
@@ -63,7 +63,7 @@
 		}
 
 
-        format++;
+        *format++;
     }
 
     va_end(args);
