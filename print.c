@@ -11,61 +11,71 @@
  *
  * Return: The number of characters printed (excluding the null byte)
  */
+
+int print_number(int num);
+
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int count = 0;
-	char *str_arg;
-	int int_arg;
-	char char_arg;
+    va_list args;
+    int count = 0;
+    char *str_arg;
+    int int_arg;
+    char char_arg;
 
-	va_start(args, format);
+    va_start(args, format);
 
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
 
-			switch (*format)
-			{
-			case 'c':
-				char_arg = va_arg(args, int);
-				count += _putchar(char_arg);
-				break;
-			case 's':
-				str_arg = va_arg(args, char *);
-				if (str_arg == NULL)
-					str_arg = "(null)";
-				while (*str_arg)
-				{
-					count += _putchar(*str_arg);
-					str_arg++;
-				}
-				break;
-			case 'd':
-			case 'i':
-				int_arg = va_arg(args, int);
-				count += print_number(int_arg);
-				break;
-			case '%':
-				count += _putchar('%');
-				break;
-			default:
-				count += _putchar('%');
-				count += _putchar(*format);
-				break;
-			}
-		}
-		else
-			{
-			count += _putchar(*format);
-			}
+            switch (*format)
+            {
+            case 'c':
+                char_arg = va_arg(args, int);
+                count += _putchar(char_arg);
+                break;
+            case 's':
+                str_arg = va_arg(args, char *);
+                if (str_arg == NULL)
+                    str_arg = "(null)";
+                while (*str_arg)
+                {
+                    count += _putchar(*str_arg);
+                    str_arg++;
+                }
+                break;
+            case 'd':
+            case 'i':
+                int_arg = va_arg(args, int);
+                count += print_number(int_arg);
+                break;
+            case '%':
+                count += _putchar('%');
+                break;
+            default:
+                count += _putchar('%');
+                count += _putchar(*format);
+                break;
+            }
+        }
+        else
+        {
+            count += _putchar(*format);
+        }
 
-			format++;
-	}
+        format++;
+    }
 
-	va_end(args);
+    va_end(args);
 
-	return (count);
+    return count;
+}
+
+int print_number(int num)
+{
+    // تنفيذ طباعة الأعداد هنا
+    // يمكنك تخصيصها حسب احتياجاتك
+    return 0;
 }
