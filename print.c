@@ -1,28 +1,28 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
-int _printf(const char *format, ...) {
+int _printf(const char *format, ...)
+{
     va_list args;
     va_start(args, format);
-    
-    int count = 0; // Counter for the number of characters printed
-    
+
+    int count = 0; // Counter to keep track of the number of characters printed
+
     while (*format != '\0') {
         if (*format == '%') {
-            format++; // Move past the '%'
-            
-            // Check the next character after '%'
+            format++; // Move to the next character after '%'
+
+            // Check the conversion specifier
             switch (*format) {
                 case 'c': {
-                    // Print a single character
-                    int c = va_arg(args, int);
+                    char c = (char)va_arg(args, int);
                     putchar(c);
                     count++;
                     break;
                 }
                 case 's': {
-                    // Print a string
-                    char *s = va_arg(args, char *);
+                    char *s = va_arg(args, char*);
                     while (*s != '\0') {
                         putchar(*s);
                         s++;
@@ -30,27 +30,19 @@ int _printf(const char *format, ...) {
                     }
                     break;
                 }
-                case '%': {
-                    // Print a percent sign
+                case '%':
                     putchar('%');
                     count++;
                     break;
-                }
-                default: {
-                    // Invalid conversion specifier, ignore it
-                    break;
-                }
             }
         } else {
-            // Regular character, print it
             putchar(*format);
             count++;
         }
-        
         format++; // Move to the next character in the format string
     }
-    
+
     va_end(args);
-    
     return count;
 }
+
