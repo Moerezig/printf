@@ -1,9 +1,8 @@
+#include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
-#include <unistd.h>
 #include <stdlib.h>
-#include <stdarg.h>
 
 
 /**
@@ -59,11 +58,11 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
-		{
+			{
 			count += _putchar(*format);
-		}
+			}
 
-		format++;
+			format++;
 	}
 
 	va_end(args);
