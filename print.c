@@ -72,10 +72,3 @@ int _printf(const char *format, ...)
 
     return count;
 }
-
-int print_number(int num)
-{
-    // تنفيذ طباعة الأعداد هنا
-    // يمكنك تخصيصها حسب احتياجاتك
-    return 0;
-}
