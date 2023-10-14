@@ -1,15 +1,21 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>
+#define BUFFER_SIZE 1024
+
 #include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
 #include <stdarg.h>
 
-int _putchar(char c);
+typedef struct specifier
+{
+    char *v;
+    void (*fun)(va_list);
+} spec;
+
 int _printf(const char *format, ...);
-int print_number(int n);
+int print_c(va_list list);
+int print_s(va_list list);
+int print_percent(va_list list);
+int _putchar(char c);
 
 #endif
