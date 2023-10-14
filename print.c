@@ -1,35 +1,47 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 
-/**
- * @f: format to print
- * @i: print character
- * return: sucssec
- */
-    int _printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
-    unsigned i = 0, *f = 0;
-    va_list __args;
-    va_start(args, *format);
-    while (*frmat[i] != NULL; i+ 1)
-    {
-        if (*format[i] != '%')
-        {
-                putchar(*format[i])
-        }
-        else if (*frmat[i+1] == 'c')
-        {
-            putchar(va_arg(args,int));
-            i+ +;
-        }
-        else (*format[i +1 == 's'])
-        {
+    va_list args;
+    va_start(args, format);
 
+    int count = 0; // Counter to keep track of the number of characters printed
+
+    while (*format != '\0') {
+        if (*format == '%') {
+            format++; // Move to the next character after '%'
+
+            // Check the conversion specifier
+            switch (*format) {
+                case 'c': {
+                    char c = (char)va_arg(args, int);
+                    putchar(c);
+                    count++;
+                    break;
+                }
+                case 's': {
+                    char *s = va_arg(args, char*);
+                    while (*s != '\0') {
+                        putchar(*s);
+                        s++;
+                        count++;
+                    }
+                    break;
+                }
+                case '%':
+                    putchar('%');
+                    count++;
+                    break;
+            }
+        } else {
+            putchar(*format);
+            count++;
         }
+        format++; // Move to the next character in the format string
     }
-        i += 1;
-    return(i);
+
+    va_end(args);
+    return count;
 }
-
-
