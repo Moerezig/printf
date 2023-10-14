@@ -15,10 +15,6 @@
 	int _printf(const char *format, ...)
 {
     va_list args;
-    int count = 0;
-    char *str_arg;
-    int int_arg;
-    char char_arg;
 
     va_start(args, format);
 
