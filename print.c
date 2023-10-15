@@ -49,9 +49,10 @@ int _printf(const char *format, ...)
 				count += print_number(int_arg);
 				break;
 			case '%':
-				while (*format == '%')
+				while(*format)
 				{
 				count += _putchar('%');
+				format++
 				}
 				break;
 			default:
