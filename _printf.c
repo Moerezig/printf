@@ -1,11 +1,11 @@
 #include "main.h"
 
 
+
 /**
  * _printf - custom printf function
  * @format: The format string
- *
- * Return: The number of characters printed (excluding the null byte)
+ * Return: The number of characters printed
  */
 int _printf(const char *format, ...)
 {
@@ -44,7 +44,6 @@ int _printf(const char *format, ...)
 			case 'i':
 				int_arg = va_arg(args, int);
 				count += print_number(int_arg);
-				
 				break;
 			case 'u':
 				uint_arg = va_arg(args, unsigned int);
