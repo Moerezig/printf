@@ -1,71 +1,60 @@
 #include "main.h"
+#include <stdio.h>
+#include <stdarg.h>
+
+#define BUFFER_SIZE 1024
 
 /**
- * _printf - custom printf function
- * @format: The format string
- *
- * Return: The number of characters printed (excluding the null byte)
- */
-int _printf(const char *format, ...)
-{
-	va_list args;
-	int count = 0;
-	char *str_arg;
-	int int_arg;
-	char char_arg;
+ * printf - a custom printf function
+ * @format: print char
+ * Return: the formatted string
+*/
+int _printf(const char *format, ...) {
+  va_list args;
+  int buffer_index = 0;
+  char buffer[BUFFER_SIZE];
 
-	va_start(args, format);
+  if (format == NULL) {
+    return (-1);
+  }
 
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
+  va_start(args, format);
 
-			switch (*format)
-			{
-			case 'c':
-				char_arg = va_arg(args, int);
-				count += _putchar(char_arg);
-				break;
-			case 's':
-				str_arg = va_arg(args, char *);
-				if (str_arg == NULL)
-					str_arg = "(null)";
-				while (*str_arg)
-				{
-					count += _putchar(*str_arg);
-					str_arg++;
-				}
-				break;
-			case 'd':
-			case 'i':
-				int_arg = va_arg(args, int);
-				if (int_arg < 0) {
-					count += _putchar('-');
-					int_arg *= -1;
-				}
-				count += print_number(int_arg);
-				break;
-			case '%':
-				count += _putchar('%');
-				break;
-			default:
-				count += _putchar('%');
-				count += _putchar(*format);
-				break;
-			}
-		}
-		else
-		{
-			count += _putchar(*format);
-		}
+  while (*format) {
+    if (*format != '%') {
+      buffer[buffer_index++] = *format;
+    } else {
+      format++;
 
-		format++;
-	}
+      switch (*format) {
+        case 'c':
+          buffer[buffer_index++] = va_arg(args, int);
+          break;
+        case 's':
+          char *str = va_arg(args, char *);
+          int str_len = 0;
+          while (*str != '\0') {
+            str_len++;
+            str++;
+          }
+          memcpy(&buffer[buffer_index], str, str_len);
+          buffer_index += str_len;
+          break;
+        default:
+          // Handle other conversion specifiers here.
+          break;
+      }
+    }
 
-	va_end(args);
+    format++;
+  }
 
-	return (count);
+  va_end(args);
+
+  buffer[buffer_index] = '\0';
+  write(1, buffer, buffer_index);
+
+  return (buffer_index);
 }
+
 
