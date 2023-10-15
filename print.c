@@ -20,7 +20,7 @@ int _printf(const char *format, ...) {
 
   va_start(args, format);
 
-  while (*format) {
+  while (format) {
     if (*format != '%') {
       buffer[buffer_index++] = *format;
     } else {
@@ -41,7 +41,7 @@ int _printf(const char *format, ...) {
           buffer_index += str_len;
           break;
         default:
-          // Handle other conversion specifiers here.
+        // handle other here
           break;
       }
     }
