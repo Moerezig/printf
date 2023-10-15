@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * _printf - custom printf function
  * @format: The format string
@@ -42,10 +41,21 @@ int _printf(const char *format, ...)
 			case 'd':
 			case 'i':
 				int_arg = va_arg(args, int);
+			
+				if (int_arg < 0) {
+					count += _putchar('-');
+					int_arg *= -1;
+				}
 				count += print_number(int_arg);
 				break;
 			case '%':
-				count += _putchar('%');
+				if (*format == '%') {
+					count += _putchar('%');
+					format++;
+				} else {
+					count += _putchar('%');
+					count += _putchar(*format);
+				}
 				break;
 			default:
 				count += _putchar('%');
@@ -65,3 +75,4 @@ int _printf(const char *format, ...)
 
 	return (count);
 }
+
