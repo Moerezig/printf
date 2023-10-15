@@ -26,11 +26,10 @@ int _printf(const char *format, ...)
 			{
 			case 'c':
 				char_arg = va_arg(args, int);
+				count += _putchar(char_arg);
 				break;
 			case 's':
 				str_arg = va_arg(args, char *);
-				if (str_arg == NULL)
-					str_arg = "(null)";
 				while (*str_arg)
 				{
 					count += _putchar(*str_arg);
