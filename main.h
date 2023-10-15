@@ -1,14 +1,17 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <stdarg.h>
 #include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
+#include <stdarg.h>
 
-int _putchar(char c);
+#define BUFFER_SIZE 1024
+
+/**
+ * printf - a custom printf function
+ * @format: print char
+ * Return: the formatted string
+*/
 int _printf(const char *format, ...);
-int print_number(int n);
 
 #endif
+

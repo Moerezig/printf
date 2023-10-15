@@ -41,7 +41,7 @@ int _printf(const char *format, ...) {
           buffer_index += str_len;
           break;
         default:
-        // handle other here
+         // Handle other conversion specifiers here.
           break;
       }
     }
