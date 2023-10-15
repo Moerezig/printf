@@ -30,6 +30,8 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				str_arg = va_arg(args, char *);
+				if (str_arg == NULL)
+					str_arg = "(null)";
 				while (*str_arg)
 				{
 					count += _putchar(*str_arg);
@@ -47,7 +49,10 @@ int _printf(const char *format, ...)
 				count += print_number(int_arg);
 				break;
 			case '%':
+				while (*format == '%')
+				{
 				count += _putchar('%');
+				}
 				break;
 			default:
 				count += _putchar('%');
