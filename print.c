@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 	char *str_arg;
 	int int_arg;
 	char char_arg;
+	unsigned int uint_arg;
 
 	va_start(args, format);
 
@@ -43,6 +44,15 @@ int _printf(const char *format, ...)
 			case 'i':
 				int_arg = va_arg(args, int);
 				count += print_number(int_arg);
+				
+				break;
+			case 'u':
+				uint_arg = va_arg(args, unsigned int);
+				count += print_unsigned_number(uint_arg);
+				break;
+			case 'b':
+				uint_arg = va_arg(args, unsigned int);
+				count += print_binary(uint_arg);
 				break;
 			case '%':
 				count += _putchar('%');
