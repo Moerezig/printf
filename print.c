@@ -48,16 +48,8 @@ int _printf(const char *format, ...)
 				}
 				count += print_number(int_arg);
 				break;
-			case '%':
-				if(*format == '%')
-				{	
+			case '%':	
 				count += _putchar('%');
-				format++
-				}
-				else {
-					count += _putchar('%');
-					count += _putchar(*format);
-				}
 				break;
 
 			default:
