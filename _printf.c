@@ -17,6 +17,9 @@ int _printf(const char *format, ...)
 	char char_arg;
 	unsigned int uint_arg;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
 
 	while (*format)
