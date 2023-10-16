@@ -42,3 +42,55 @@ int print_hexadecimal(unsigned int num, int uppercase)
 		return (_putchar(remainder - 10 + letter));
 	}
 }
+
+/**
+ * print_reversed_string - Prints a given string in reverse order
+ * @str: The string to be printed in reverse
+ *
+ * Return: The length of the string
+ */
+int print_reversed_string(const char *str)
+{
+	if (str == NULL)
+		return (0);
+
+	int length = 0;
+
+	while (str[length] != '\0')
+		length++;
+
+	for (int i = length - 1; i >= 0; i--)
+		_putchar(str[i]);
+
+	return (length);
+}
+
+/**
+ * print_rot13_string - Applies ROT13 cipher to a given string and print
+ * @str: The string to be ciphered and printed
+ *
+ * Return: The number of characters printed
+ */
+int print_rot13_string(const char *str)
+{
+	if (str == NULL)
+		return (0);
+
+	int count = 0;
+
+	while (*str)
+	{
+		
+	char c = *str;
+		
+	if ((c >= 'a' && c <= 'm') || (c >= 'A' && c <= 'M'))
+			c += 13;
+		else if ((c >= 'n' && c <= 'z') || (c >= 'N' && c <= 'Z'))
+			c -= 13;
+
+		count += _putchar(c);
+
+		str++;
+	}
+		return (count);
+}
