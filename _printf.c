@@ -1,3 +1,12 @@
+#include "main.h"
+
+/**
+ * _printf - custom printf function
+ * @format: The format string
+ *
+ * Return: The number of characters printed (excluding the null byte)
+ */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -6,11 +15,10 @@ int _printf(const char *format, ...)
 	int int_arg;
 	char char_arg;
 	unsigned int uint_arg;
-	
-	if (format == NULL)
-		return (-1);
 
 	va_start(args, format);
+	if (format == NULL)
+		return (-1);
 
 	while (*format)
 	{
@@ -74,5 +82,5 @@ int _printf(const char *format, ...)
 
 	va_end(args);
 
-	return count;
+	return (count);
 }
