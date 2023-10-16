@@ -13,5 +13,7 @@ int _printf(const char *format, ...);
 int print_number(int n);
 int print_unsigned_number(unsigned int n);
 int print_binary(unsigned int n);
+int print_rot13_string(const char *str);
+int print_reversed_string(const char *str);
 
 #endif
