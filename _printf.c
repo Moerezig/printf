@@ -51,6 +51,17 @@ int _printf(const char *format, ...)
 				uint_arg = va_arg(args, unsigned int);
 				count += print_unsigned_number(uint_arg);
 				break;
+			case 'o':
+				uint_arg = va_arg(args, unsigned int);
+				count += print_octal(uint_arg);
+				break;
+			case 'x':
+				uint_arg = va_arg(args, unsigned int);
+				count += print_hexadecimal(uint_arg, 0);
+				break;
+			case 'X':
+				uint_arg = va_arg(args, unsigned int);
+				count += print_hexadecimal(uint_arg, 1);
 			case 'b':
 				uint_arg = va_arg(args, unsigned int);
 				count += print_binary(uint_arg);
