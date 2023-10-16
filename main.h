@@ -15,5 +15,7 @@ int print_unsigned_number(unsigned int n);
 int print_binary(unsigned int n);
 int print_rot13_string(const char *str);
 int print_reversed_string(const char *str);
+int print_hexadecimal(unsigned int num, int uppercase);
+int print_octal(unsigned int num);
 
 #endif
